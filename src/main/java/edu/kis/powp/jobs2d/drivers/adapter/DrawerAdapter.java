@@ -27,6 +27,8 @@ public class DrawerAdapter extends DrawerFeature implements Job2dDriver {
 		ILine line = LineFactory.getBasicLine();
 		line.setStartCoordinates(this.startX, this.startY);
 		line.setEndCoordinates(x, y);
+        this.startX = x;
+        this.startY = y;
 
 		getDrawerController().drawLine(line);
 	}
