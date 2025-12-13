@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.CommandFactory;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.FigureType;
@@ -28,6 +29,12 @@ public class TestJobs2dPatterns {
 
 		application.addTest(FigureType.FIGURE_JOE_1.toString(), selectTestFigureOptionListener);
         application.addTest(FigureType.FIGURE_JOE_2.toString(), selectTestFigureOptionListener);
+
+        application.addTest(FigureType.RECTANGLE.toString(), (ActionEvent e) -> 
+            CommandFactory.getRectangle().execute(DriverFeature.getDriverManager().getCurrentDriver()));
+        
+        application.addTest(FigureType.TRIANGLE.toString(), (ActionEvent e) -> 
+            CommandFactory.getTriangle().execute(DriverFeature.getDriverManager().getCurrentDriver()));
 	}
 
 	/**
