@@ -8,9 +8,12 @@ import java.util.List;
  */
 public class ComplexCommand implements DriverCommand {
 
-    private List<DriverCommand> commands;
+    private final List<DriverCommand> commands;
 
     public ComplexCommand(List<DriverCommand> commands) {
+        if (commands == null) {
+            throw new IllegalArgumentException("Commands list cannot be null");
+        }
         this.commands = commands;
     }
 
@@ -21,4 +24,3 @@ public class ComplexCommand implements DriverCommand {
         }
     }
 }
-
