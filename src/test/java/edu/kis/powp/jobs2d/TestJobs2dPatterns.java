@@ -7,10 +7,12 @@ import java.util.logging.Logger;
 
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
+import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.FigureType;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.legacy.drawer.shape.LineFactory;
 
 public class TestJobs2dPatterns {
 	private final static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -40,6 +42,12 @@ public class TestJobs2dPatterns {
 
 		Job2dDriver testDriver = new DrawerAdapter();
 		DriverFeature.addDriver("Buggy Simulator", testDriver);
+
+		Job2dDriver specialLineDriver = new LineDrawerAdapter(LineFactory::getSpecialLine);
+		DriverFeature.addDriver("Special Line Driver", specialLineDriver);
+
+		Job2dDriver basicLineDriver = new LineDrawerAdapter(LineFactory::getBasicLine);
+		DriverFeature.addDriver("Basic Line Driver", basicLineDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
